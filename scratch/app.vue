@@ -4,11 +4,16 @@
     <p>
       {{ number }}
     </p>
-    <hr>
+    <br>
     <!-- 単一ファイルコンポーネントだと@でイベントを検知してメソッドを呼ぶ-->
     <button @click="increment">
         click
     </button>
+    <hr>
+    <!-- formのinputなど双方向バインディングにはv-modelを使う．-->
+    <!-- 入力されたイベントを検知してメソッドを呼ぶみたいなことをしなくていい．-->
+    <input v-model="message" placeholder="edit me">
+    <p>{{ message }}</p>
   </div>
 </template>
 
@@ -18,7 +23,8 @@ export default {
   // dataは関数にしてリターンでオブジェクトを返すようにする．
   data() {
     return {
-        number: 0
+        number: 0,
+        message: "please type!"
     }
   },
   methods: {
