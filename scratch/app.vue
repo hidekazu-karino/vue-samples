@@ -24,8 +24,12 @@
     </div>
     <div>
       <h3>v-bindでタグの属性を変更する．下の文章のサイズが大きくなる．</h3>
-      <p v-bind:style="{ fontSize: fontSize + 'px' }">{{ message_style_change }}</p>
+      <p v-bind:style="{ fontSize: fontSize + 'px' }">{{ message_size_change }}</p>
       <input type="number" v-model.number="fontSize" placeholder="10" />
+    </div>
+    <div>
+      <h3>styleを詳細に指定する</h3>
+      <p v-bind:style="styles">{{ message_for_style }}</p>
     </div>
   </div>
 </template>
@@ -39,8 +43,17 @@ export default {
       number: 0,
       message: "please type!",
       message_render: "Hello Vue!",
-      message_style_change: "This sentence becomes bigger.",
-      fontSize: 10
+      message_size_change: "This sentence becomes bigger.",
+      fontSize: 10,
+      message_for_style: "Sample style",
+      styles: {
+        margin: "10px",
+        padding: "5px 20px",
+        fontSize: "20px",
+        color: "red",
+        backgroudColor: "#fee",
+        border: "3px solid blue"
+      }
     };
   },
   // renderに設定されているのはアロー関数
