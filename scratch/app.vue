@@ -37,6 +37,42 @@
       <p v-else>Some problems.</p>
       <button @click="flag=!flag">Click</button>
     </div>
+    <div>
+      <template v-if="flag">
+        <p>Table</p>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>mail</th>
+          </tr>
+          <tr>
+            <td>Jekyll</td>
+            <td>jekyll@good</td>
+          </tr>
+          <tr>
+            <td>Hyde</td>
+            <td>hyde@evil</td>
+          </tr>
+        </table>
+      </template>
+      <template v-else>
+        <p>List</p>
+        <ul>
+          <li>Jekyll's address is jekyll@good</li>
+          <li>Hyde's address is hyde@evil</li>
+        </ul>
+      </template>
+    </div>
+    <div>
+      <h3>v-forでリストを表示する．</h3>
+      <tr v-for="item in prefectures" :key="item">
+        <td>{{ item}}</td>
+      </tr>
+      <tr v-for="(item, id) in prefectures" :key="id">
+        <td>{{ id }}</td>
+        <td>{{item}}</td>
+      </tr>
+    </div>
   </div>
 </template>
 
@@ -63,7 +99,8 @@ export default {
         backgroudColor: "#fee",
         // 文字の周りを3pxの青色実線で囲む
         border: "3px solid blue"
-      }
+      },
+      prefectures: ["Osaka", "Kyoto", "Tokyo"]
     };
   },
   // renderに設定されているのはアロー関数
