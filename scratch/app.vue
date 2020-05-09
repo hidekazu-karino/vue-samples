@@ -31,6 +31,12 @@
       <h3>styleを詳細に指定する</h3>
       <p v-bind:style="styles">{{ message_for_style }}</p>
     </div>
+    <div>
+      <h3>v-ifで条件分岐</h3>
+      <p v-if="flag">This is normal.</p>
+      <p v-else>Some problems.</p>
+      <button @click="flag=!flag">Click</button>
+    </div>
   </div>
 </template>
 
@@ -46,12 +52,16 @@ export default {
       message_size_change: "This sentence becomes bigger.",
       fontSize: 10,
       message_for_style: "Sample style",
+      flag: true,
       styles: {
+        // marginは領域間のスペース
         margin: "10px",
+        // paddingは領域間のスペース
         padding: "5px 20px",
         fontSize: "20px",
         color: "red",
         backgroudColor: "#fee",
+        // 文字の周りを3pxの青色実線で囲む
         border: "3px solid blue"
       }
     };
