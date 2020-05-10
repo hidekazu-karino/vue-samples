@@ -14,6 +14,10 @@
       <button @click="$store.commit('decrement')">decrement</button>
       <input type="number" v-model="add_number" />
       <button @click="Add">Add n</button>
+      <br />
+      <input type="number" v-model="add_number" />
+      <input v-model="add_message" />
+      <button @click="add_and_message">Add and message</button>
     </div>
   </div>
 </template>
@@ -23,12 +27,20 @@ export default {
   data: function() {
     return {
       title: "Hello",
-      add_number: 0
+      add_number: 0,
+      add_message: ""
     };
   },
   methods: {
     Add() {
       this.$store.commit("increment_by_n", parseInt(this.add_number));
+    },
+    add_and_message() {
+      this.$store.commit({
+        type: "increment_and_change_message",
+        number: parseInt(this.add_number),
+        message: this.add_message
+      });
     }
   }
 };
