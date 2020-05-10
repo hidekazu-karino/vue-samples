@@ -12,9 +12,14 @@
       </ul>
     </div>
     <div>
+      <h2>親から子コンポーネントへデータを渡す</h2>
       <!-- 子コンポーネントのプロパティにv-bindで親のプロパティをバインディングすれば親から子へデータを渡せる-->
       <helloworld v-bind:title="message" />
       <button v-on:click="sendTitle">change title</button>
+      <h2>子から親コンポーネントへデータを渡す</h2>
+      <!-- 子コンポーネントから親コンポーネントへデータを受け渡すよう-->
+      <helloworld v-on:result-event="reflectDataFromChild" />
+      <p>{{ result }}</p>
     </div>
   </div>
 </template>
@@ -37,13 +42,17 @@ export default {
         { name: "ぶどう", price: 500 },
         { name: "apple", price: 300 }
       ],
-      message: "HELLO"
+      message: "HELLO",
+      result: "no event"
     };
   },
   methods: {
     sendTitle: function() {
       let input = prompt("new title:");
       this.message = input;
+    },
+    reflectDataFromChild: function(message) {
+      this.result = '(*** you send: "' + message + '".***)';
     }
   }
 };

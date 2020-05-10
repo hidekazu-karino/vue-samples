@@ -25,6 +25,8 @@ export default {
   methods: {
     doAction: function() {
       this.message = "Hello, Mr " + this.input;
+      // 親のテンプレートにおいて子のコンポーネントが配置されているタグにイベントを送る．
+      this.$emit("result-event", this.input);
     }
   }
 };
