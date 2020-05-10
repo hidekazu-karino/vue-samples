@@ -16,17 +16,20 @@ export default {
       title: "Login"
     };
   },
+  // validateを追加する．真偽値を返す関数
+  //問題ないときはtrue,問題あるときは404エラーを発生させる．
+  validate({ params }) {
+    if (params.id == undefined || params.pass.length <= 4) {
+      return false;
+    } else {
+      return true;
+    }
+  },
   computed: {
     message: function() {
-      let id =
-        this.$route.params.id != undefined
-          ? this.$route.params.id
-          : "*** no id ***";
-      let pass =
-        this.$route.params.id != undefined
-          ? this.$route.params.pass
-          : "*** no password ***";
-      return "ID: " + id + "<br>PASS: " + pass;
+      return (
+        "ID: " + this.$route.params.id + "<br>PASS: " + this.$route.params.pass
+      );
     }
   }
 };
