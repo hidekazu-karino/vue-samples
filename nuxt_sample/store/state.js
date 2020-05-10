@@ -1,4 +1,5 @@
 export default () => ({
-    message: "This is store message"
+    message: "This is store message",
+    counter: 0
 })
 
