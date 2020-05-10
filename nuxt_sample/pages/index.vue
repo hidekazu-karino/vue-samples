@@ -18,6 +18,7 @@
       <input type="number" v-model="add_number" />
       <input v-model="add_message" />
       <button @click="add_and_message">Add and message</button>
+      <button @click="change_by_actions">call actions</button>
     </div>
   </div>
 </template>
@@ -38,6 +39,13 @@ export default {
     add_and_message() {
       this.$store.commit({
         type: "increment_and_change_message",
+        number: parseInt(this.add_number),
+        message: this.add_message
+      });
+    },
+    change_by_actions() {
+      this.$store.dispatch({
+        type: "doit",
         number: parseInt(this.add_number),
         message: this.add_message
       });

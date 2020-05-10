@@ -1,4 +1,7 @@
 export default {
+    change_message(state, m) {
+        state.message = m
+    },
     increment(state) {
         state.counter++
     },
