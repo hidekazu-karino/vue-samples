@@ -55,10 +55,16 @@ export default {
   },
   methods: {
     async call_api(id) {
-      let result = await axios.get(url + id);
-      // これでもリアルタイムでは描画されない．ただコンソールにログを出している感じだとそもそも非同期処理だからな気もする
-      console.log(result.data);
-      this.$set(this, "json_data", result.data);
+      console.log("API call");
+      axios
+        .get(url + id)
+        .then(res => {
+          this.$set(this, "json_data", res.data);
+        })
+        .catch(error => {
+          console.log(error);
+          (this.message = "ERROR"), this.$set(this, "json_data", {});
+        });
     }
   }
 };
